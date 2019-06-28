@@ -1,6 +1,7 @@
 ﻿using Moq;
 using SportsStore2.Controllers;
 using SportsStore2.Models;
+using SportsStore2.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,14 @@ namespace SportsStoreTest
 
             ProductController controller = new ProductController(mock.Object);
             controller.PageSize = 3;
+
+            ProductsListViewModel result = controller.List( 2).ViewData.Model as ProductsListViewModel;
+
+            // Assert
+            Product[] prodArray = result.Products.ToArray();
+            Assert.True(prodArray.Length == 2);
+            Assert.Equal("P4", prodArray[0].Name);
+            Assert.Equal("P5", prodArray[1].Name);
         }
 
     }
