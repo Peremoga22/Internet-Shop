@@ -1,4 +1,5 @@
 ﻿using Moq;
+using SportsStore2.Controllers;
 using SportsStore2.Models;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,9 @@ namespace SportsStoreTest
                 new Product {ProductID = 4, Name = "P4"},
                 new Product {ProductID = 5, Name = "P5"}
             }).AsQueryable<Product>());
+
+            ProductController controller = new ProductController(mock.Object);
+            controller.PageSize = 3;
         }
 
     }
