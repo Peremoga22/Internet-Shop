@@ -18,9 +18,9 @@ namespace SportsStore2.Models
         [Required(ErrorMessage ="Please enter  the first address line")]
         public string Street { get; set; }
 
-        public string NumberHouse { get; set; }
+        public int NumberHouse { get; set; }
 
-        public string NumberFlat { get; set; }
+        public int NumberFlat { get; set; }
         [Required(ErrorMessage = "Please enter  a city name")]
         public string City { get; set; }
         [Required(ErrorMessage = "Please enter  a oblast name")]
