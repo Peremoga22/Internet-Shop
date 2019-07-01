@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SportsStore.Models;
 using SportsStore2.Models;
 
 namespace SportsStore2
@@ -67,8 +68,8 @@ namespace SportsStore2
 
                     routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
                 });
-               
-            }
+            SeedData.EnsurePopulated(app);
+             }
         }
     
 }
