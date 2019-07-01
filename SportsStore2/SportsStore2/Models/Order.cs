@@ -26,7 +26,7 @@ namespace SportsStore2.Models
         [Required(ErrorMessage = "Please enter  a oblast name")]
         public string Oblast { get; set; }
 
-        public string Zip { get; set; }
+        public int Zip { get; set; }
         [Required(ErrorMessage = "Please enter  a country name")]
         public string Country { get; set; }
 
