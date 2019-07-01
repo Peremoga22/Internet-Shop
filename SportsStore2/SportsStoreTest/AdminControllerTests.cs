@@ -34,6 +34,7 @@ namespace SportsStoreTest
             Assert.Equal("P2", result[1].Name);
             Assert.Equal("P3", result[2].Name);
         }
+
         private T GetViewModel<T>(IActionResult result) where T : class
         {
             return (result as ViewResult)?.ViewData.Model as T;
