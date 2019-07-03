@@ -16,6 +16,11 @@ namespace SportsStore2.Models
 
         public IQueryable<Product> Products => context.Products;
 
+        public Product DeleteProduct(int productID)
+        {
+            throw new NotImplementedException();
+        }
+
         public void SaveProduct(Product product)
         {
             if (product.ProductID == 0)
