@@ -18,7 +18,12 @@ namespace SportsStore2.Models
 
         public Product DeleteProduct(int productID)
         {
-            throw new NotImplementedException();
+            Product dbEntry = context.Products.FirstOrDefault(p => p.ProductID == productID);
+            if(dbEntry !=null)
+            {
+                context.Products.Remove(dbEntry);
+            }
+            return dbEntry;
         }
 
         public void SaveProduct(Product product)
