@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,6 +27,8 @@ namespace SportsStore2
                 services.AddDbContext<ApplicationDbContext>(options =>
                     options.UseSqlServer(
                         Configuration["Data:SportStoreProducts:ConnectionString"]));
+                services.AddDbContext<AppIndentityDbContext>(options => options.UseSqlServer(Configuration["Data:SportStoreIdentity:ConnectionString"]));
+                services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppIndentityDbContext>().AddDefaultTokenProviders();
                 services.AddTransient<IProductRepository, EFProductRepository>();
                 services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
                 services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -41,6 +44,7 @@ namespace SportsStore2
                 app.UseStatusCodePages();
                 app.UseStaticFiles();
                 app.UseSession();
+                app.UseAuthentication();
                 app.UseMvc(routes =>
                 {
                     routes.MapRoute(
